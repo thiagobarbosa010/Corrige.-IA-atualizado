@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "serve -s dist -l ${PORT:-8080}"
+    "start": "serve -s dist -l $PORT"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.43.1",
@@ -16,8 +16,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
-    "recharts": "^2.12.7",
-    "serve": "^14.2.3"
+    "recharts": "^2.12.7"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

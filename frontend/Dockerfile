@@ -16,6 +16,8 @@ ARG VITE_API_URL
 RUN npm run build
 
 # Stage 2: servir arquivos estáticos com Node.js serve
+# CACHEBUST força rebuild mesmo com layers em cache
+ARG CACHEBUST=2
 FROM node:20-alpine AS runner
 
 RUN npm install -g serve@14
