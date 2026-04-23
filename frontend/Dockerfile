@@ -15,16 +15,15 @@ ARG VITE_API_URL
 
 RUN npm run build
 
-# Stage 2: servir com nginx
-FROM nginx:alpine
+# Stage 2: servir arquivos estáticos com Node.js serve
+FROM node:20-alpine
 
-# Copia o build gerado
-COPY --from=builder /app/dist /usr/share/nginx/html
+RUN npm install -g serve
 
-# nginx:alpine suporta templates em /etc/nginx/templates/*.template
-# O entrypoint faz envsubst automaticamente antes de iniciar o nginx
-COPY nginx.conf /etc/nginx/templates/default.conf.template
-
-EXPOSE 8080
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
 
 ENV PORT=8080
+EXPOSE 8080
+
+CMD ["sh", "-c", "serve -s dist -l ${PORT}"]
