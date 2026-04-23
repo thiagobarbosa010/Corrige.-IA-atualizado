@@ -1,9 +1,10 @@
 {
   "build": {
-    "builder": "dockerfile",
-    "dockerfilePath": "Dockerfile"
+    "builder": "nixpacks",
+    "buildCommand": "npm ci && npm run build"
   },
   "deploy": {
+    "startCommand": "npm run start",
     "restartPolicyType": "on_failure",
     "restartPolicyMaxRetries": 3,
     "healthcheckPath": "/",
