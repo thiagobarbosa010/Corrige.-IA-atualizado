@@ -16,9 +16,9 @@ ARG VITE_API_URL
 RUN npm run build
 
 # Stage 2: servir arquivos estáticos com Node.js serve
-FROM node:20-alpine
+FROM node:20-alpine AS runner
 
-RUN npm install -g serve
+RUN npm install -g serve@14
 
 WORKDIR /app
 COPY --from=builder /app/dist ./dist
